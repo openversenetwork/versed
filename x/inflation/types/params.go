@@ -29,7 +29,7 @@ var ParamsKey = []byte("Params")
 
 var (
 	DefaultInflationDenom         = evm.DefaultEVMDenom
-	DefaultInflation              = true
+	DefaultInflation              = false
 	DefaultExponentialCalculation = ExponentialCalculation{
 		A:             sdk.NewDec(int64(300_000_000)),
 		R:             sdk.NewDecWithPrec(50, 2), // 50%

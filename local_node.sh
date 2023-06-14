@@ -3,7 +3,7 @@
 KEYS[0]="dev0"
 KEYS[1]="dev1"
 KEYS[2]="dev2"
-CHAINID="evmos_9000-1"
+CHAINID="openverse_9000-1"
 MONIKER="localtestnet"
 # Remember to change to other types of keyring like 'file' in-case exposing to outside world,
 # otherwise your balance will be wiped quickly
@@ -12,7 +12,7 @@ KEYRING="test"
 KEYALGO="eth_secp256k1"
 LOGLEVEL="info"
 # Set dedicated home directory for the evmosd instance
-HOMEDIR="$HOME/.tmp-evmosd"
+HOMEDIR="$HOME/.versed"
 # to trace evm
 #TRACE="--trace"
 TRACE=""
@@ -63,11 +63,11 @@ if [[ $overwrite == "y" || $overwrite == "Y" ]]; then
 	evmosd init $MONIKER -o --chain-id $CHAINID --home "$HOMEDIR"
 
 	# Change parameter token denominations to aevmos
-	jq '.app_state["staking"]["params"]["bond_denom"]="aevmos"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
-	jq '.app_state["crisis"]["constant_fee"]["denom"]="aevmos"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
-	jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="aevmos"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
-	jq '.app_state["evm"]["params"]["evm_denom"]="aevmos"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
-	jq '.app_state["inflation"]["params"]["mint_denom"]="aevmos"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+	jq '.app_state["staking"]["params"]["bond_denom"]="aenergy"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+	jq '.app_state["crisis"]["constant_fee"]["denom"]="aenergy"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+	jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="aenergy"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+	jq '.app_state["evm"]["params"]["evm_denom"]="aenergy"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
+	jq '.app_state["inflation"]["params"]["mint_denom"]="aenergy"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 
 	# Set gas limit in genesis
 	jq '.consensus_params["block"]["max_gas"]="10000000"' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
@@ -86,31 +86,6 @@ if [[ $overwrite == "y" || $overwrite == "Y" ]]; then
 	jq '.app_state["claims"]["params"]["duration_of_decay"]="1000000s"' >"$TMP_GENESIS" "$GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 	jq '.app_state["claims"]["params"]["duration_until_decay"]="100000s"' >"$TMP_GENESIS" "$GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 
-	# Claim module account:
-	# 0xA61808Fe40fEb8B3433778BBC2ecECCAA47c8c47 || evmos15cvq3ljql6utxseh0zau9m8ve2j8erz89m5wkz
-	jq -r --arg amount_to_claim "$amount_to_claim" '.app_state["bank"]["balances"] += [{"address":"evmos15cvq3ljql6utxseh0zau9m8ve2j8erz89m5wkz","coins":[{"denom":"aevmos", "amount":$amount_to_claim}]}]' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
-
-	if [[ $1 == "pending" ]]; then
-		if [[ "$OSTYPE" == "darwin"* ]]; then
-			sed -i '' 's/timeout_propose = "3s"/timeout_propose = "30s"/g' "$CONFIG"
-			sed -i '' 's/timeout_propose_delta = "500ms"/timeout_propose_delta = "5s"/g' "$CONFIG"
-			sed -i '' 's/timeout_prevote = "1s"/timeout_prevote = "10s"/g' "$CONFIG"
-			sed -i '' 's/timeout_prevote_delta = "500ms"/timeout_prevote_delta = "5s"/g' "$CONFIG"
-			sed -i '' 's/timeout_precommit = "1s"/timeout_precommit = "10s"/g' "$CONFIG"
-			sed -i '' 's/timeout_precommit_delta = "500ms"/timeout_precommit_delta = "5s"/g' "$CONFIG"
-			sed -i '' 's/timeout_commit = "5s"/timeout_commit = "150s"/g' "$CONFIG"
-			sed -i '' 's/timeout_broadcast_tx_commit = "10s"/timeout_broadcast_tx_commit = "150s"/g' "$CONFIG"
-		else
-			sed -i 's/timeout_propose = "3s"/timeout_propose = "30s"/g' "$CONFIG"
-			sed -i 's/timeout_propose_delta = "500ms"/timeout_propose_delta = "5s"/g' "$CONFIG"
-			sed -i 's/timeout_prevote = "1s"/timeout_prevote = "10s"/g' "$CONFIG"
-			sed -i 's/timeout_prevote_delta = "500ms"/timeout_prevote_delta = "5s"/g' "$CONFIG"
-			sed -i 's/timeout_precommit = "1s"/timeout_precommit = "10s"/g' "$CONFIG"
-			sed -i 's/timeout_precommit_delta = "500ms"/timeout_precommit_delta = "5s"/g' "$CONFIG"
-			sed -i 's/timeout_commit = "5s"/timeout_commit = "150s"/g' "$CONFIG"
-			sed -i 's/timeout_broadcast_tx_commit = "10s"/timeout_broadcast_tx_commit = "150s"/g' "$CONFIG"
-		fi
-	fi
 
     # enable prometheus metrics
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -134,7 +109,7 @@ if [[ $overwrite == "y" || $overwrite == "Y" ]]; then
 
 	# Allocate genesis accounts (cosmos formatted addresses)
 	for KEY in "${KEYS[@]}"; do
-		evmosd add-genesis-account "$KEY" 100000000000000000000000000aevmos --keyring-backend $KEYRING --home "$HOMEDIR"
+		evmosd add-genesis-account "$KEY" 100000000000000000000000000aenergy --keyring-backend $KEYRING --home "$HOMEDIR"
 	done
 
 	# bc is required to add these big numbers
@@ -142,7 +117,7 @@ if [[ $overwrite == "y" || $overwrite == "Y" ]]; then
 	jq -r --arg total_supply "$total_supply" '.app_state["bank"]["supply"][0]["amount"]=$total_supply' "$GENESIS" >"$TMP_GENESIS" && mv "$TMP_GENESIS" "$GENESIS"
 
 	# Sign genesis transaction
-	evmosd gentx "${KEYS[0]}" 1000000000000000000000aevmos --keyring-backend $KEYRING --chain-id $CHAINID --home "$HOMEDIR"
+	evmosd gentx "${KEYS[0]}" 1000000000000000000000aenergy --keyring-backend $KEYRING --chain-id $CHAINID --home "$HOMEDIR"
 	## In case you want to create multiple validators at genesis
 	## 1. Back to `evmosd keys add` step, init more keys
 	## 2. Back to `evmosd add-genesis-account` step, add balance for those
@@ -156,10 +131,7 @@ if [[ $overwrite == "y" || $overwrite == "Y" ]]; then
 	# Run this to ensure everything worked and that the genesis file is setup correctly
 	evmosd validate-genesis --home "$HOMEDIR"
 
-	if [[ $1 == "pending" ]]; then
-		echo "pending mode is on, please wait for the first block committed."
-	fi
 fi
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-evmosd start --metrics "$TRACE" --log_level $LOGLEVEL --minimum-gas-prices=0.0001aevmos --json-rpc.api eth,txpool,personal,net,debug,web3 --api.enable --home "$HOMEDIR"
+evmosd start --metrics "$TRACE" --log_level $LOGLEVEL --minimum-gas-prices=0.0001aenergy --json-rpc.api eth,txpool,personal,net,debug,web3 --api.enable --home "$HOMEDIR"
