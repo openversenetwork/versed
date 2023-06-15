@@ -36,13 +36,13 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 
-	"github.com/evmos/evmos/v12/types"
-	evmtypes "github.com/evmos/evmos/v12/x/evm/types"
+	"github.com/openversenetwork/versed/v12/types"
+	evmtypes "github.com/openversenetwork/versed/v12/x/evm/types"
 
-	evmoskr "github.com/evmos/evmos/v12/crypto/keyring"
+	evmoskr "github.com/openversenetwork/versed/v12/crypto/keyring"
 
-	vestingcli "github.com/evmos/evmos/v12/x/vesting/client/cli"
-	vestingtypes "github.com/evmos/evmos/v12/x/vesting/types"
+	vestingcli "github.com/openversenetwork/versed/v12/x/vesting/client/cli"
+	vestingtypes "github.com/openversenetwork/versed/v12/x/vesting/types"
 )
 
 const (

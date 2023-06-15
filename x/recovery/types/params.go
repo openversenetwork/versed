@@ -27,7 +27,7 @@ var ParamsKey = []byte("Params")
 // DefaultPacketTimeoutDuration defines the default packet timeout for outgoing
 // IBC transfers
 var (
-	DefaultEnableRecovery        = true
+	DefaultEnableRecovery        = false
 	DefaultPacketTimeoutDuration = 4 * time.Hour
 )
 

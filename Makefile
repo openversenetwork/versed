@@ -119,15 +119,13 @@ endif
 
 BUILD_TARGETS := build install
 
-build: BUILD_ARGS=-o $(BUILDDIR)/
+build: BUILD_ARGS=-o $(BUILDDIR)/versed
 build-linux:
 	GOOS=linux GOARCH=amd64 LEDGER_ENABLED=false $(MAKE) build
 
 $(BUILD_TARGETS): go.sum $(BUILDDIR)/
 	go $@ $(BUILD_FLAGS) $(BUILD_ARGS) ./...
 
-$(BUILDDIR)/:
-	mkdir -p $(BUILDDIR)/
 
 build-reproducible: go.sum
 	$(DOCKER) rm latest-build || true
@@ -166,7 +164,7 @@ distclean: clean tools-clean
 
 clean:
 	rm -rf \
-    $(BUILDDIR)/ \
+    $(BUILDDIR) \
     artifacts/ \
     tmp-swagger-gen/
 

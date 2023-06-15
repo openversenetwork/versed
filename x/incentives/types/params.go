@@ -21,14 +21,14 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	epochstypes "github.com/evmos/evmos/v12/x/epochs/types"
+	epochstypes "github.com/openversenetwork/versed/v12/x/epochs/types"
 )
 
 // ParamsKey params store key
 var ParamsKey = []byte("Params")
 
 var (
-	DefaultEnableIncentives          = true
+	DefaultEnableIncentives          = false
 	DefaultAllocationLimit           = sdk.NewDecWithPrec(5, 2)
 	DefaultIncentivesEpochIdentifier = epochstypes.WeekEpochID
 	DefaultRewardScalar              = sdk.NewDecWithPrec(12, 1)

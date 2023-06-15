@@ -51,17 +51,17 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 
-	evmosclient "github.com/evmos/evmos/v12/client"
-	"github.com/evmos/evmos/v12/client/debug"
-	"github.com/evmos/evmos/v12/encoding"
-	"github.com/evmos/evmos/v12/ethereum/eip712"
-	evmosserver "github.com/evmos/evmos/v12/server"
-	servercfg "github.com/evmos/evmos/v12/server/config"
-	srvflags "github.com/evmos/evmos/v12/server/flags"
+	evmosclient "github.com/openversenetwork/versed/v12/client"
+	"github.com/openversenetwork/versed/v12/client/debug"
+	"github.com/openversenetwork/versed/v12/encoding"
+	"github.com/openversenetwork/versed/v12/ethereum/eip712"
+	evmosserver "github.com/openversenetwork/versed/v12/server"
+	servercfg "github.com/openversenetwork/versed/v12/server/config"
+	srvflags "github.com/openversenetwork/versed/v12/server/flags"
 
-	"github.com/evmos/evmos/v12/app"
-	cmdcfg "github.com/evmos/evmos/v12/cmd/config"
-	evmoskr "github.com/evmos/evmos/v12/crypto/keyring"
+	"github.com/openversenetwork/versed/v12/app"
+	cmdcfg "github.com/openversenetwork/versed/v12/cmd/config"
+	evmoskr "github.com/openversenetwork/versed/v12/crypto/keyring"
 )
 
 const (
