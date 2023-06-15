@@ -53,13 +53,13 @@ import (
 	mintypes "github.com/cosmos/cosmos-sdk/x/mint/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/openversenetwork/versed/v12/crypto/hd"
-	"github.com/openversenetwork/versed/v12/server/config"
-	srvflags "github.com/openversenetwork/versed/v12/server/flags"
-	evmostypes "github.com/openversenetwork/versed/v12/types"
-	evmtypes "github.com/openversenetwork/versed/v12/x/evm/types"
+	"github.com/evmos/evmos/v12/crypto/hd"
+	"github.com/evmos/evmos/v12/server/config"
+	srvflags "github.com/evmos/evmos/v12/server/flags"
+	evmostypes "github.com/evmos/evmos/v12/types"
+	evmtypes "github.com/evmos/evmos/v12/x/evm/types"
 
-	"github.com/openversenetwork/versed/v12/testutil/network"
+	"github.com/evmos/evmos/v12/testutil/network"
 )
 
 var (
@@ -142,7 +142,7 @@ or a similar setup where each node has a manually configurable IP address.
 Note, strict routability for addresses is turned off in the config file.
 
 Example:
-	evmosd testnet init-files --v 4 --output-dir ./.testnets --starting-ip-address 192.168.10.2
+	versed testnet init-files --v 4 --output-dir ./.testnets --starting-ip-address 192.168.10.2
 	`,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			clientCtx, err := client.GetClientQueryContext(cmd)
@@ -188,7 +188,7 @@ and generate "v" directories, populated with necessary validator configuration f
 (private validator, genesis, config, etc.).
 
 Example:
-	evmosd testnet --v 4 --output-dir ./.testnets
+	versed testnet --v 4 --output-dir ./.testnets
 	`,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			args := startArgs{}

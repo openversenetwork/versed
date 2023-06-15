@@ -3,7 +3,7 @@ package cli
 import (
 	"testing"
 
-	"github.com/openversenetwork/versed/v12/x/erc20/types"
+	"github.com/evmos/evmos/v12/x/erc20/types"
 	"github.com/stretchr/testify/require"
 )
 

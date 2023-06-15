@@ -5,8 +5,8 @@ package types_test
 import (
 	"testing"
 
-	utiltx "github.com/openversenetwork/versed/v12/testutil/tx"
-	"github.com/openversenetwork/versed/v12/x/incentives/types"
+	utiltx "github.com/evmos/evmos/v12/testutil/tx"
+	"github.com/evmos/evmos/v12/x/incentives/types"
 )
 
 func FuzzSplitGasMeterKey(f *testing.F) {

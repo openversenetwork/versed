@@ -27,5 +27,5 @@ COPY --from=build-env /go/src/github.com/evmos/evmos/scripts/start-docker.sh /
 
 EXPOSE 26656 26657 1317 9090 8545 8546
 
-# Run evmosd by default, omit entrypoint to ease using container with evmosd
+# Run versed by default, omit entrypoint to ease using container with versed
 ENTRYPOINT ["/bin/bash", "-c"]

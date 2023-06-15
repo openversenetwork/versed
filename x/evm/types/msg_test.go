@@ -17,12 +17,12 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/openversenetwork/versed/v12/crypto/ethsecp256k1"
-	utiltx "github.com/openversenetwork/versed/v12/testutil/tx"
+	"github.com/evmos/evmos/v12/crypto/ethsecp256k1"
+	utiltx "github.com/evmos/evmos/v12/testutil/tx"
 
-	"github.com/openversenetwork/versed/v12/app"
-	"github.com/openversenetwork/versed/v12/encoding"
-	"github.com/openversenetwork/versed/v12/x/evm/types"
+	"github.com/evmos/evmos/v12/app"
+	"github.com/evmos/evmos/v12/encoding"
+	"github.com/evmos/evmos/v12/x/evm/types"
 )
 
 const invalidAddress = "0x0000"

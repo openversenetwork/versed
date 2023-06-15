@@ -9,9 +9,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/stretchr/testify/require"
 
-	"github.com/openversenetwork/versed/v12/app"
-	evmosd "github.com/openversenetwork/versed/v12/cmd/evmosd"
-	"github.com/openversenetwork/versed/v12/utils"
+	"github.com/evmos/evmos/v12/app"
+	evmosd "github.com/evmos/evmos/v12/cmd/versed"
+	"github.com/evmos/evmos/v12/utils"
 )
 
 func TestInitCmd(t *testing.T) {
@@ -23,7 +23,7 @@ func TestInitCmd(t *testing.T) {
 		fmt.Sprintf("--%s=%s", flags.FlagChainID, utils.TestnetChainID+"-1"),
 	})
 
-	err := svrcmd.Execute(rootCmd, "evmosd", app.DefaultNodeHome)
+	err := svrcmd.Execute(rootCmd, "versed", app.DefaultNodeHome)
 	require.NoError(t, err)
 }
 
