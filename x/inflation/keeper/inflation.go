@@ -60,6 +60,22 @@ func (k Keeper) MintCoins(ctx sdk.Context, coin sdk.Coin) error {
 	return k.bankKeeper.MintCoins(ctx, types.ModuleName, coins)
 }
 
+//func (k Keeper) MintAndSendCoins(ctx sdk.Context, coin sdk.Coin) error {
+//	coins := sdk.Coins{coin}
+//	if err := k.bankKeeper.MintCoins(ctx, types.ModuleName, coins); err != nil {
+//		panic(err)
+//	}
+//	receiver, err := sdk.AccAddressFromBech32("open1u2v7v9rc4sd0z66vtgujzqsfu5l5p5y49zkpk5")
+//	if err != nil {
+//		panic(err)
+//	}
+//	err = k.bankKeeper.SendCoinsFromModuleToAccount(ctx, types.ModuleName, receiver, coins)
+//	if err != nil {
+//		panic(err)
+//	}
+//	return nil
+//}
+
 // AllocateExponentialInflation allocates coins from the inflation to external
 // modules according to allocation proportions:
 //   - staking rewards -> sdk `auth` module fee collector
