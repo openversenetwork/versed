@@ -31,9 +31,9 @@ import (
 
 const (
 	// MainnetChainID defines the Evmos EIP155 chain ID for mainnet
-	MainnetChainID = "openverse_9001"
+	MainnetChainID = "openverse_23617"
 	// TestnetChainID defines the Evmos EIP155 chain ID for testnet
-	TestnetChainID = "openverse_9000"
+	TestnetChainID = "openverse_23618"
 	// BaseDenom defines the Evmos mainnet denomination
 	BaseDenom = "aenergy"
 )
